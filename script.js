@@ -2,27 +2,30 @@ const card = document.querySelector('.card');
 const flipBtn = document.getElementById('flipBtn');
 const flipBackBtn = document.getElementById('flipBackBtn');
 
-// Flip front to back
-flipBtn.addEventListener('click', (e) => {
+function flipToBack(e) {
   e.stopPropagation();
   card.style.transform = "scale(0.97)";
   setTimeout(() => {
     card.classList.add('is-flipped');
     card.style.transform = "";
   }, 100);
-});
+}
 
-// Flip back to front
-flipBackBtn.addEventListener('click', (e) => {
+function flipToFront(e) {
   e.stopPropagation();
   card.style.transform = "scale(0.97)";
   setTimeout(() => {
     card.classList.remove('is-flipped');
     card.style.transform = "";
   }, 100);
-});
+}
 
-// Matrix Animation
+flipBtn.addEventListener('click', flipToBack);
+flipBackBtn.addEventListener('click', flipToFront);
+flipBtn.addEventListener('touchstart', flipToBack);
+flipBackBtn.addEventListener('touchstart', flipToFront);
+
+// MATRIX BACKGROUND
 const canvas = document.getElementById('matrix-canvas');
 const ctx = canvas.getContext('2d');
 canvas.height = window.innerHeight;
