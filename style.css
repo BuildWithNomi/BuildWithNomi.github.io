@@ -1,125 +1,149 @@
-/* Reset & Base Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background: linear-gradient(to bottom right, #1a1a1a, #2c2c2c);
-    font-family: 'Segoe UI', sans-serif;
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-  }
-  
-  /* Card Container */
-  .card-container {
-    perspective: 1200px;
-    width: 90%;
-    max-width: 400px;
-    height: 500px;
-  }
-  
-  /* Card Flip */
-  .card {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    position: relative;
-  }
-  
-  /* Front & Back Faces */
-  .card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    backface-visibility: hidden;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  /* Different Backgrounds for Visibility */
-  .card-front {
-    background: rgba(50, 50, 50, 0.85);
-  }
-  
-  .card-back {
-    background: rgba(30, 30, 30, 0.85);
-    transform: rotateY(180deg);
-  }
-  
-  /* Flip State */
-  .card.is-flipped {
-    transform: rotateY(180deg);
-  }
-  
-  /* Typography & Buttons */
-  h1, h2 {
-    color: #f76b8a;
-    margin-bottom: 0rem;
-    text-align: center;
-  }
-  
-  p {
-    color: #ccc;
-    font-size: 1rem;
-    line-height: 1.6;
-    text-align: center;
-  }
-  
-  ul {
-    list-style: none;
-    margin: 0rem 0;
-    padding: 0;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: black;
+}
+
+/* Matrix Background */
+#matrix-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: black;
+}
+
+/* Card Container */
+.card-container {
+  perspective: 1500px;
+  width: 90%;
+  max-width: 500px;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.4s;
+}
+
+/* Card Flip */
+.card {
+  width: 100%;
+  position: relative;
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  border-radius: 20px;
+  min-height: 550px;
+}
+
+/* Card Faces */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  min-height: 550px;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0 8px 32px rgba(0, 255, 0, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 255, 0, 0.1);
+  background: rgba(0, 0, 0, 0.85);
+  overflow-y: auto;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* Typography */
+h1, h2 {
+  color: #39ff14;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+p, li {
+  color: #ccffcc;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+li {
+  margin: 0.3rem 0;
+}
+
+/* Buttons */
+button {
+  margin-top: 1.2rem;
+  padding: 0.5rem 1.2rem;
+  background: #39ff14;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #66ff66;
+  transform: scale(1.05);
+}
+
+/* Social Icons */
+.socials {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.socials a {
+  font-size: 1.7rem;
+  color: #39ff14;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.socials a:hover {
+  transform: scale(1.2);
+  color: #fff;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  li {
-    color: #ccc;
-    margin: 0.5rem 0;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  button {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background: #f76b8a;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  button:hover {
-    background:rgb(188, 40, 69);
-  }
-  
-  /* Responsive */
-  @media (min-width: 768px) {
-    .card-container {
-      max-width: 600px;
-      height: 400px;
-    }
-  
-    h1 {
-      font-size: 2.5rem;
-    }
-  
-    p {
-      font-size: 1.1rem;
-    }
-  }
-  
+}
