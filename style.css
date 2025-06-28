@@ -1,0 +1,125 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: linear-gradient(to bottom right, #1a1a1a, #2c2c2c);
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  /* Card Container */
+  .card-container {
+    perspective: 1200px;
+    width: 90%;
+    max-width: 400px;
+    height: 500px;
+  }
+  
+  /* Card Flip */
+  .card {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  
+  /* Front & Back Faces */
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Different Backgrounds for Visibility */
+  .card-front {
+    background: rgba(50, 50, 50, 0.85);
+  }
+  
+  .card-back {
+    background: rgba(30, 30, 30, 0.85);
+    transform: rotateY(180deg);
+  }
+  
+  /* Flip State */
+  .card.is-flipped {
+    transform: rotateY(180deg);
+  }
+  
+  /* Typography & Buttons */
+  h1, h2 {
+    color: #f76b8a;
+    margin-bottom: 0rem;
+    text-align: center;
+  }
+  
+  p {
+    color: #ccc;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+  
+  ul {
+    list-style: none;
+    margin: 0rem 0;
+    padding: 0;
+    text-align: center;
+
+  }
+  
+  li {
+    color: #ccc;
+    margin: 0.5rem 0;
+  }
+  
+  button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #f76b8a;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    background:rgb(188, 40, 69);
+  }
+  
+  /* Responsive */
+  @media (min-width: 768px) {
+    .card-container {
+      max-width: 600px;
+      height: 400px;
+    }
+  
+    h1 {
+      font-size: 2.5rem;
+    }
+  
+    p {
+      font-size: 1.1rem;
+    }
+  }
+  
