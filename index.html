@@ -1,47 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nomaan | Android Developer</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <canvas id="matrix-canvas"></canvas>
-
-  <div class="card-container">
-    <div class="card">
-      <div class="card-front">
-        <h1>Noman Khan</h1>
-        <p>Android App Developer</p>
-        <button id="flipBtn">More About Me</button>
-      </div>
-      <div class="card-back">
-        <h2>About Me</h2>
-        <p>
-          I'm Noman, a BSc CS student focused on Android Development. I enjoy building clean UIs, automating workflows, and solving real problems through code.
-          Currently pursuing a BSc in Computer Science, I spend most of my time sharpening skills in Android dev, ethical hacking, OSINT, and Python scripting.
-        </p>
-
-        <h2>Skills</h2>
-        <ul>
-          <li>Kotlin & Jetpack Compose</li>
-          <li>Firebase</li>
-          <li>Git & Github</li>
-          <li>Python Scripting</li>
-        </ul>
-
-        <h2>Contact Me</h2>
-        <div class="socials">
-          <a href="mailto:dev.nomii@gmail.com" target="_blank" title="Email">&#9993;</a>
-          <a href="https://instagram.com/fr.nmi" target="_blank" title="Instagram">&#x1F4F7;</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noman | Android Developer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="sidebar">
+        <div class="info">
+          <img src="./img/836.png" alt="profile image" />
+          <h1>Noman</h1>
         </div>
+        <div class="hamburger" id="hamburger">
+          <i class="ph ph-list"></i>
+        </div>
+        <nav class="nav" id="navLinks">
+          <a class="nav-link" href="#home"><i class="ph ph-house"></i> Home</a>
+          <a class="nav-link" href="#about"><i class="ph ph-user"></i> About</a>
+          <a class="nav-link" href="#projects"
+            ><i class="ph ph-folder-open"></i> Projects</a
+          >
+          <a class="nav-link" href="#contact"
+            ><i class="ph ph-globe"></i> Contact</a
+          >
+        </nav>
+      </div>
 
-        <button id="flipBackBtn">Back</button>
+      <div class="content">
+        <section id="home">
+          <h1>Noman Khan</h1>
+          <p id="role">Android App Developer</p>
+        </section>
+
+        <section id="about">
+          <h1>About Me</h1>
+          <p>
+            I'm Noman, a Computer Science student with a strong focus on
+            Android development.Passionate about crafting clean,
+            user-friendly interfaces and building solutions that automate tasks
+            and solve real-world problems. While Android is my main playground,
+            I also explore ethical hacking, OSINT, and Python scripting to
+            broaden my tech perspective and sharpen my problem-solving
+            abilities.
+          </p>
+
+          <div class="skills">
+            <h2>Skills</h2>
+            <ul>
+              <li>Kotlin</li>
+              <li>Jetpack Compose</li>
+              <li>Firebase</li>
+              <li>Git & GitHub</li>
+               <li>Linux</li>
+              <li>Python Scripting</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="projects">
+          <h1>Projects</h1>
+          <div class="project-list">
+            <div class="project-card">
+              <h2>PassSafe</h2>
+              <p>
+                 A password manager that encrypts and stores user credentials
+                locally for offline usage.
+              </p>
+              <span
+                ><strong>Tech Stack:</strong> Kotlin, Jetpack Compose, Android
+                Keystore</span>
+            </div>
+
+            <div class="project-card">
+              <h2>Lexbot(In development)</h2>
+              <p>
+LexBot is a smart legal assistant app designed for Indian users to fight corruption, handle legal issues, and protect their rights.</p>
+              <span><strong>Tech Stack:</strong>Kotlin, Jetpack Compose, Firebase, Firestore, Dialogflow, ML Kit, Android Jetpack Libraries.</span>
+            </div>
+
+            <div class="project-card">
+              <h2>GymSync(In development)</h2>
+              <p>
+               Track workouts, sets, reps,gains and diet all in one simple, powerful app. Stay consistent. See results.
+              </p>
+              <span
+                ><strong>Tech Stack:</strong> Kotlin, Jetpack Compose, Room, DataStore, Firebase, MPAndroidChart, Lottie, Android Jetpack Libraries.</span
+              >
+            </div>
+          </div>
+        </section>
+
+        <section id="contact">
+          <h1>Contact</h1>
+          <div class="contact-links">
+            <a href="mailto:dev.nomii@gmail.com" target="_blank">
+              <i class="ph ph-envelope-simple"></i> Email
+            </a>
+            <a href="https://github.com/buildwithnomi" target="_blank">
+              <i class="ph ph-github-logo"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/buildwithnomi" target="_blank">
+              <i class="ph ph-linkedin-logo"></i> LinkedIn
+            </a>
+            <a href="https://x.com/buildwithnomi" target="_blank">
+              <i class="ph ph-twitter-logo"></i> Twitter
+            </a>
+            <a href="https://www.instagram.com/fr.nmi" target="_blank">
+              <i class="ph ph-instagram-logo"></i> Instagram
+            </a>
+          </div>
+        </section>
       </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <script>
+      const sections = document.querySelectorAll(".content section");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        {
+          threshold: 0.3,
+        }
+      );
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("navLinks");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("show");
+        });
+      });
+    </script>
+  </body>
 </html>
